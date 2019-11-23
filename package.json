@@ -1,0 +1,28 @@
+{
+  "name": "react-weather-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bartosz Kahl <bartosz.kahl@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack -w",
+    "build": "NODE_ENV=production webpack",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-middleware": "^3.7.2"
+  }
+}
