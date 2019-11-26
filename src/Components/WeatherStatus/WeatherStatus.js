@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './WeatherStatus.scss';
+import PropTypes from "prop-types";
 
 const WeatherStatus = ({ weather }) => (
     <section className={ styles.weatherStatus }>
@@ -15,5 +16,14 @@ const WeatherStatus = ({ weather }) => (
         </div>
     </section>
 );
+
+WeatherStatus.propTypes = {
+    weather: PropTypes.shape({
+        temperature: PropTypes.number,
+        pressure: PropTypes.number,
+        weather_icons: PropTypes.arrayOf(PropTypes.string),
+        weather_descriptions: PropTypes.arrayOf(PropTypes.string),
+    }),
+};
 
 export default WeatherStatus;

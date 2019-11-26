@@ -3,13 +3,13 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import {DatePicker} from "@material-ui/pickers";
 import { Switch } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Input from "./Components/Input/Input";
 import useApi from "./Hooks/WeatherStack";
 import TemperatureChart from "./Components/TemperatureChart/TemperatureChart";
 import HistoricalDataTable from "./Components/HistoricalDataTable/HistoricalDataTable";
 import styles from './App.scss';
 import WeatherStatus from "./Components/WeatherStatus/WeatherStatus";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 const App = () => {
     const [location, setLocation] = useState("");
@@ -37,7 +37,7 @@ const App = () => {
                 <Input onSelect={value => setLocation(value || "")}/>
                 { location && <h1 className={ styles.location }>{ location }</h1>}
                 { weather.loading && <CircularProgress size={40} classes={{ root: styles.loader }}/> }
-                { weather.current && <WeatherStatus weather={ weather.current } /> }
+                { weather.current && <WeatherStatus weather={weather.current} /> }
                 <div className={ styles.controls }>
                     <div className={ styles.switch}>
                         <Switch

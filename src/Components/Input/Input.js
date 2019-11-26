@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from "prop-types";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from "@material-ui/core/TextField";
 import styles from './Input.scss';
@@ -41,6 +42,10 @@ const Input = ({ onSelect }) => {
             classes={{ inputRoot: styles.input }}
         />
     );
+};
+
+Input.propTypes = {
+    onSelect: PropTypes.func,
 };
 
 export default Input;
