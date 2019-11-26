@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from "@material-ui/core/TextField";
+import TextField from '@material-ui/core/TextField';
 import styles from './Input.scss';
 
-const initialQuery = "";
+const initialQuery = '';
 const initialSuggestions = [];
 
 const fetchSuggestions = async (query, setSuggestions) => {
@@ -22,23 +22,21 @@ const Input = ({ onSelect }) => {
     const [query, setQuery] = useState(initialQuery);
     const [suggestions, setSuggestions] = useState(initialSuggestions);
 
-    useEffect(()  => {
+    useEffect(() => {
         if (query.length > 2) {
             fetchSuggestions(query, setSuggestions);
         }
     }, [query]);
 
-    return(
+    return (
         <Autocomplete
-            options={ suggestions }
-            getOptionLabel={option => option.name }
-            onInputChange={ (event, value) => setQuery(value) }
-            onChange={ (event, value) => value && onSelect(value.name) }
-            renderInput={params => (
-                <TextField {...params} variant="outlined" />
-            )}
-            defaultValue={{name: ""}}
-            className={ styles.input }
+            options={suggestions}
+            getOptionLabel={option => option.name}
+            onInputChange={(event, value) => setQuery(value)}
+            onChange={(event, value) => value && onSelect(value.name)}
+            renderInput={params => <TextField {...params} variant="outlined" />}
+            defaultValue={{ name: '' }}
+            className={styles.input}
             classes={{ inputRoot: styles.input }}
         />
     );

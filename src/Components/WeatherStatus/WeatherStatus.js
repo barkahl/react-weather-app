@@ -1,17 +1,21 @@
 import React from 'react';
 import styles from './WeatherStatus.scss';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const WeatherStatus = ({ weather }) => (
-    <section className={ styles.weatherStatus }>
-        <span className={ styles.item }>{ weather.temperature + "°C" }</span>
-        <span className={ styles.item }>{ weather.pressure + " hPa" }</span>
-        <div className={ styles.item }>
-            <div className={ styles.icons }>
-                { weather.weather_icons.map(icon => <img src={icon} className={ styles.icon }/>) }
+    <section className={styles.weatherStatus}>
+        <span className={styles.item}>{weather.temperature + '°C'}</span>
+        <span className={styles.item}>{weather.pressure + ' hPa'}</span>
+        <div className={styles.item}>
+            <div className={styles.icons}>
+                {weather.weather_icons.map((icon, index) => (
+                    <img src={icon} className={styles.icon} key={index} />
+                ))}
             </div>
-            <div className={ styles.descriptions }>
-                { weather.weather_descriptions.map(description => <p>{ description }</p>)}
+            <div className={styles.descriptions}>
+                {weather.weather_descriptions.map((description, index) => (
+                    <p key={index}>{description}</p>
+                ))}
             </div>
         </div>
     </section>

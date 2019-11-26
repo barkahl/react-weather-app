@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from "recharts";
-import styles from './TemperatureChart.scss'
-import {formatTime} from "../../Utils/Helpers";
+import PropTypes from 'prop-types';
+import {
+    CartesianGrid,
+    Line,
+    LineChart,
+    Tooltip,
+    XAxis,
+    YAxis,
+} from 'recharts';
+import styles from './TemperatureChart.scss';
+import { formatTime } from '../../Utils/Helpers';
 
 const processData = data =>
     data.map(({ time, temperature }) => ({
@@ -10,14 +17,19 @@ const processData = data =>
         temperature,
     }));
 
-const TemperatureChart = ({data}) => {
+const TemperatureChart = ({ data }) => {
     return (
-        <LineChart width={600} height={300} data={processData(data)} className={styles.container}>
-            <Line type="monotone" dataKey="temperature" stroke="#8884d8"/>
-            <CartesianGrid stroke="#ccc"/>
-            <XAxis dataKey="time"/>
-            <YAxis/>
-            <Tooltip/>
+        <LineChart
+            width={600}
+            height={300}
+            data={processData(data)}
+            className={styles.container}
+        >
+            <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="time" />
+            <YAxis />
+            <Tooltip />
         </LineChart>
     );
 };
@@ -28,7 +40,7 @@ TemperatureChart.propTypes = {
             time: PropTypes.string,
             temperature: PropTypes.number,
         })
-    )
+    ),
 };
 
 export default TemperatureChart;

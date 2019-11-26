@@ -2,7 +2,7 @@ import {
     FETCH_WEATHER,
     FETCH_ERROR,
     FETCH_CURRENT_WEATHER_SUCCESS,
-    FETCH_HISTORICAL_WEATHER_SUCCESS
+    FETCH_HISTORICAL_WEATHER_SUCCESS,
 } from '../Constants/Actions';
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    const {type, payload} = action;
+    const { type, payload } = action;
 
     switch (type) {
         case FETCH_WEATHER:
@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error:true,
+                error: true,
             };
         default:
             return state;

@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {formatTime, formatWeatherDescriptions} from "../../Utils/Helpers";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { formatTime, formatWeatherDescriptions } from '../../Utils/Helpers';
 import styles from './HistoricalDataTable.scss';
 
-const TableRow = ({time, temperature, pressure, descriptions, icons }) => (
+const TableRow = ({ time, temperature, pressure, descriptions, icons }) => (
     <tr className={styles.row}>
         <td className={styles.cell}>{formatTime(time)}</td>
         <td className={styles.cell}>{temperature}</td>
@@ -12,7 +12,9 @@ const TableRow = ({time, temperature, pressure, descriptions, icons }) => (
             {formatWeatherDescriptions(descriptions)}
         </td>
         <td className={styles.cell}>
-            {icons.map(icon => <img src={icon} className={styles.icon}/>)}
+            {icons.map((icon, index) => (
+                <img src={icon} className={styles.icon} key={index} />
+            ))}
         </td>
     </tr>
 );

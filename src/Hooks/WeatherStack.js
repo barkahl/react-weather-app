@@ -1,18 +1,18 @@
-import React, {useReducer} from 'react';
+import { useReducer } from 'react';
 import { format } from 'date-fns';
-import reducer, {initialState} from "../Reducers/Weather";
+import reducer, { initialState } from '../Reducers/Weather';
 import {
     FETCH_CURRENT_WEATHER_SUCCESS,
     FETCH_HISTORICAL_WEATHER_SUCCESS,
     FETCH_WEATHER,
-} from "../Constants/Actions";
+} from '../Constants/Actions';
 
 const DATE_FORMAT = 'yyyy-MM-dd';
 
 const fetchCurrentWeather = async (location, dispatch) => {
     const url = `/api/current?query=${location}`;
 
-    dispatch({type: FETCH_WEATHER});
+    dispatch({ type: FETCH_WEATHER });
 
     try {
         const response = await fetch(url);
@@ -34,7 +34,7 @@ const fetchHistoricalWeather = async (location, date, dispatch) => {
     const formattedDate = format(date, DATE_FORMAT);
     const url = `/api/historical?query=${location}&historical_date=${formattedDate}&hourly=1`;
 
-    dispatch({type: FETCH_WEATHER});
+    dispatch({ type: FETCH_WEATHER });
 
     try {
         const response = await fetch(url);
@@ -56,8 +56,10 @@ const fetchHistoricalWeather = async (location, date, dispatch) => {
 const useApi = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const makeCurrentWeatherRequest = location => fetchCurrentWeather(location, dispatch);
-    const makeHistoricalWeatherRequest = (location, date) => fetchHistoricalWeather(location, date, dispatch);
+    const makeCurrentWeatherRequest = location =>
+        fetchCurrentWeather(location, dispatch);
+    const makeHistoricalWeatherRequest = (location, date) =>
+        fetchHistoricalWeather(location, date, dispatch);
 
     return [state, makeCurrentWeatherRequest, makeHistoricalWeatherRequest];
 };
