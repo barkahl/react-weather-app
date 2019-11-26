@@ -1,22 +1,9 @@
 import React from 'react';
-
-const formatWeatherDescriptions = descriptions =>
-    descriptions.reduce(
-        (acc, curr) => acc ? [acc, curr].join(', ') : curr,
-        ''
-    );
-
-const TableRow = ({data}) => (
-    <tr>
-        <td>{data.time}</td>
-        <td>{data.temperature}</td>
-        <td>{data.pressure}</td>
-        <td>{formatWeatherDescriptions(data.weather_descriptions)}</td>
-    </tr>
-);
+import TableRow from "./TableRow";
+import styles from './HistoricalDataTable.scss';
 
 const HistoricalDataTable = ({data}) => (
-    <table>
+    <table className={ styles.container }>
         <thead>
         <tr>
             <th>Time</th>

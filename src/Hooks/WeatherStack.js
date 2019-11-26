@@ -9,7 +9,7 @@ import {
 const DATE_FORMAT = 'yyyy-MM-dd';
 
 const fetchCurrentWeather = async (location, dispatch) => {
-    const url = `/api/current?query=${location.name}`;
+    const url = `/api/current?query=${location}`;
 
     dispatch({type: FETCH_WEATHER});
 
@@ -31,7 +31,7 @@ const fetchCurrentWeather = async (location, dispatch) => {
 
 const fetchHistoricalWeather = async (location, date, dispatch) => {
     const formattedDate = format(date, DATE_FORMAT);
-    const url = `/api/historical?query=${location.name}&historical_date=${formattedDate}&hourly=1`;
+    const url = `/api/historical?query=${location}&historical_date=${formattedDate}&hourly=1`;
 
     dispatch({type: FETCH_WEATHER});
 

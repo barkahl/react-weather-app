@@ -1,0 +1,21 @@
+.container {
+  width: 600px;
+  margin: 0 auto;
+
+  .location {
+    text-align: center;
+    color: #555;
+    font-size: 50px;
+    margin: 15px 0;
+  }
+
+  .controls {
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+
+    .datepicker {
+      margin-left: auto;
+    }
+  }
+}

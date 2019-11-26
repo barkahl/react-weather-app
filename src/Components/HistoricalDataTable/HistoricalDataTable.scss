@@ -1,0 +1,17 @@
+.container {
+  margin: 20px auto;
+  border-collapse: collapse;
+
+  .row {
+    border-top: 1px solid #ccc;
+  }
+
+  .cell {
+    padding: 5px 30px;
+    text-align: center;
+  }
+
+  .icon {
+    width: 30px;
+  }
+}

@@ -3,9 +3,9 @@ import {FETCH_WEATHER, FETCH_ERROR, FETCH_SUCCESS} from '../Constants/Actions';
 const initialState = {
     loading: false,
     error: false,
-    location: {},
-    current: {},
-    historical: {},
+    location: null,
+    current: null,
+    historical: null,
 };
 
 const reducer = (state = initialState, action) => {

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from "@material-ui/core/TextField";
+import styles from './Input.scss';
 
 const initialQuery = "";
 const initialSuggestions = [];
@@ -31,11 +32,13 @@ const Input = ({ onSelect }) => {
             options={ suggestions }
             getOptionLabel={option => option.name }
             onInputChange={ (event, value) => setQuery(value) }
-            onChange={ (event, value) => onSelect(value) }
+            onChange={ (event, value) => value && onSelect(value.name) }
             renderInput={params => (
-                <TextField {...params} label="Znajdź miejscowość" variant="outlined" />
+                <TextField {...params} variant="outlined" />
             )}
             defaultValue={{name: ""}}
+            className={ styles.input }
+            classes={{ inputRoot: styles.input }}
         />
     );
 };
