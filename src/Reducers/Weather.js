@@ -1,4 +1,9 @@
-import {FETCH_WEATHER, FETCH_ERROR, FETCH_SUCCESS} from '../Constants/Actions';
+import {
+    FETCH_WEATHER,
+    FETCH_ERROR,
+    FETCH_CURRENT_WEATHER_SUCCESS,
+    FETCH_HISTORICAL_WEATHER_SUCCESS
+} from '../Constants/Actions';
 
 const initialState = {
     loading: false,
@@ -17,12 +22,22 @@ const reducer = (state = initialState, action) => {
                 ...initialState,
                 loading: true,
             };
-        case FETCH_SUCCESS:
+        case FETCH_CURRENT_WEATHER_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: false,
-                ...payload,
+                current: payload.current,
+                location: payload.location,
+            };
+        case FETCH_HISTORICAL_WEATHER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                current: payload.current,
+                historical: payload.historical,
+                location: payload.location,
             };
         case FETCH_ERROR:
             return {

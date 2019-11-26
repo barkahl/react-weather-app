@@ -2,7 +2,8 @@ import React, {useReducer} from 'react';
 import { format } from 'date-fns';
 import reducer, {initialState} from "../Reducers/Weather";
 import {
-    FETCH_SUCCESS,
+    FETCH_CURRENT_WEATHER_SUCCESS,
+    FETCH_HISTORICAL_WEATHER_SUCCESS,
     FETCH_WEATHER,
 } from "../Constants/Actions";
 
@@ -18,7 +19,7 @@ const fetchCurrentWeather = async (location, dispatch) => {
         const data = await response.json();
 
         dispatch({
-            type: FETCH_SUCCESS,
+            type: FETCH_CURRENT_WEATHER_SUCCESS,
             payload: {
                 current: data.current,
                 location: data.location,
@@ -40,7 +41,7 @@ const fetchHistoricalWeather = async (location, date, dispatch) => {
         const data = await response.json();
 
         dispatch({
-            type: FETCH_SUCCESS,
+            type: FETCH_HISTORICAL_WEATHER_SUCCESS,
             payload: {
                 current: data.current,
                 location: data.location,

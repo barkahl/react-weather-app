@@ -9,6 +9,7 @@ import TemperatureChart from "./Components/TemperatureChart/TemperatureChart";
 import HistoricalDataTable from "./Components/HistoricalDataTable/HistoricalDataTable";
 import styles from './App.scss';
 import WeatherStatus from "./Components/WeatherStatus/WeatherStatus";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const App = () => {
     const [location, setLocation] = useState("");
@@ -17,9 +18,11 @@ const App = () => {
     const [weather, fetchCurrentWeather, fetchHistoricalWeather] = useApi();
 
     useEffect(() => {
-        if (location) {
-            fetchCurrentWeather(location);
-        }
+       if (location) {
+           isHistoricalSearchEnabled && historicalDate
+               ? fetchHistoricalWeather(location, historicalDate)
+               : fetchCurrentWeather(location);
+       }
     }, [location]);
 
     useEffect(() => {
@@ -33,6 +36,7 @@ const App = () => {
             <div className={styles.container}>
                 <Input onSelect={value => setLocation(value || "")}/>
                 { location && <h1 className={ styles.location }>{ location }</h1>}
+                { weather.loading && <CircularProgress size={40} classes={{ root: styles.loader }}/> }
                 { weather.current && <WeatherStatus weather={ weather.current } /> }
                 <div className={ styles.controls }>
                     <div className={ styles.switch}>
@@ -44,13 +48,18 @@ const App = () => {
                     </div>
                     {isHistoricalSearchEnabled &&
                         <div className={styles.datepicker}>
-                            <DatePicker value={historicalDate} onChange={setHistoricalDate}/>
+                            <DatePicker format="yyyy-MM-dd" value={historicalDate} onChange={setHistoricalDate}/>
                         </div>
                     }
                 </div>
-
-                { weather.historical && <TemperatureChart data={weather.historical.hourly} /> }
-                { weather.historical && <HistoricalDataTable data={ weather.historical.hourly }/> }
+                {
+                    isHistoricalSearchEnabled &&
+                        <div>
+                            { weather.loading && <CircularProgress size={70} classes={{ root: styles.loader }} /> }
+                            { weather.historical && <TemperatureChart data={weather.historical.hourly} /> }
+                            { weather.historical && <HistoricalDataTable data={ weather.historical.hourly }/> }
+                        </div>
+                }
             </div>
         </MuiPickersUtilsProvider>
 

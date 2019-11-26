@@ -12,10 +12,15 @@
   .controls {
     display: flex;
     width: 400px;
-    margin: 20px auto;
+    margin: 30px auto;
 
     .datepicker {
       margin-left: auto;
     }
+  }
+
+  .loader {
+    display: block;
+    margin: 50px auto;
   }
 }
