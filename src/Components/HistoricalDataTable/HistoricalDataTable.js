@@ -8,8 +8,8 @@ const HistoricalDataTable = ({ data }) => (
         <thead>
             <tr>
                 <th>Time</th>
-                <th>Temperature</th>
-                <th>Pressure</th>
+                <th>Temperature [°C]</th>
+                <th>Pressure [hPa]</th>
                 <th>Description</th>
             </tr>
         </thead>

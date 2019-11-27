@@ -33,9 +33,7 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
                     'style-loader',
-                    // Translates CSS into CommonJS
                     {
                         loader: 'css-loader',
                         options: {
@@ -43,7 +41,6 @@ module.exports = {
                             importLoaders: 2,
                         },
                     },
-                    // Compiles Sass to CSS
                     'sass-loader',
                 ],
             },
