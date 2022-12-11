@@ -17,7 +17,7 @@
     "@material-ui/lab": "^4.0.0-alpha.33",
     "@material-ui/pickers": "^3.2.8",
     "date-fns": "^2.8.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-http-proxy": "^1.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
